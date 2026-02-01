@@ -110,11 +110,8 @@ const yesBtn  = document.getElementById("yes");
 const memeImg = document.getElementById("memeImg");
 const memeBox = document.getElementById("memeBox");
 
-const memes = [
-  "clap-clapping.gif",
-  "32ef49d9139f6b506f432d7376a1450.gif",
-  "e20ffa231e8c97805e9525c067e3277.gif"
-];
+
+const meme = "clap-clapping.gif";
 
 
 noBtn.addEventListener("mouseover", moveNo);
@@ -131,8 +128,7 @@ function moveNo(){
 }
 yesBtn.addEventListener("click", () => {
 
-  const random = Math.floor(Math.random() * memes.length);
-  memeImg.src = memes[random];
+  memeImg.src = meme;
 
   memeBox.style.display = "block";
   yesBtn.disabled = true;
@@ -163,5 +159,6 @@ function startHearts(){
 
 </body>
 </html>
+
 
 

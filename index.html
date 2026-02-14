@@ -14,7 +14,6 @@ body{
     overflow:hidden;
 }
 
-/* Main section */
 .container{
     padding:40px 20px;
 }
@@ -23,7 +22,6 @@ h1{
     font-size:28px;
 }
 
-/* Buttons */
 button{
     padding:12px 20px;
     margin:10px;
@@ -41,9 +39,9 @@ button{
 .no{
     background:#ffffff;
     color:#ff2d55;
+    position:relative;
 }
 
-/* Success screen */
 #success{
     display:none;
     position:fixed;
@@ -54,14 +52,12 @@ button{
     background:black;
 }
 
-/* Canvas fireworks */
 canvas{
     position:absolute;
     top:0;
     left:0;
 }
 
-/* Message */
 .message{
     position:absolute;
     top:10%;
@@ -71,7 +67,6 @@ canvas{
     z-index:2;
 }
 
-/* Photo */
 .photo{
     position:absolute;
     top:55%;
@@ -83,7 +78,6 @@ canvas{
     box-shadow:0 0 20px rgba(255,255,255,0.8);
     z-index:3;
 }
-
 
 @media(max-width:600px){
     h1{font-size:22px;}
@@ -98,14 +92,13 @@ canvas{
     <h2>Will you be mine forever? 💘</h2>
 
     <button class="yes" onclick="yesClicked()">Yes ❤️</button>
-    <button class="no" onclick="noClicked()">No please honey 😅</button>
+    <button class="no">No please honey 😅</button>
 </div>
 
 <div id="success">
     <canvas id="fireworks"></canvas>
     <div class="message">Yay! I knew you'd say yes! 💕</div>
     <img src="honey.img.jpeg" class="photo">
-
 </div>
 
 <script>
@@ -115,7 +108,7 @@ function yesClicked(){
     startFireworks();
 }
 
-/* 🔥 FIREWORKS CODE */
+/* 🔥 FIREWORKS */
 
 function startFireworks(){
 
@@ -174,28 +167,26 @@ function animate(){
 animate();
 }
 
-/* NO button infinite */
+/* 😈 RUNNING NO BUTTON */
 
-let noMessages = [
-"Seriously? 🤨",
-"Try again please honey 😘",
-"No escape 😎",
-"Are you sure honey? 😜",
-"You can’t say no 😏"
-];
+const noBtn = document.querySelector(".no");
 
-let index = 0;
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("click", moveButton);
+noBtn.addEventListener("touchstart", moveButton);
 
-function noClicked(){
-    alert(noMessages[index]);
-    index++;
-    if(index >= noMessages.length){
-        index = 0;
-    }
+function moveButton() {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    noBtn.innerText = "Not allowed 😜";
 }
 
 </script>
 
 </body>
 </html>
-

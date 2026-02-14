@@ -39,7 +39,6 @@ button{
 .no{
     background:#ffffff;
     color:#ff2d55;
-    position:relative;
 }
 
 #success{
@@ -56,6 +55,7 @@ canvas{
     position:absolute;
     top:0;
     left:0;
+    z-index:1;
 }
 
 .message{
@@ -92,7 +92,7 @@ canvas{
     <h2>Will you be mine forever? 💘</h2>
 
     <button class="yes" onclick="yesClicked()">Yes ❤️</button>
-    <button class="no">No please honey 😅</button>
+    <button class="no" onclick="noClicked()">No please honey 😅</button>
 </div>
 
 <div id="success">
@@ -167,23 +167,30 @@ function animate(){
 animate();
 }
 
-/* 😈 RUNNING NO BUTTON */
+/* 🔴 ONLY CHANGE NO TEXT */
 
-const noBtn = document.querySelector(".no");
+let messages = [
+    "Try again, please honey 😌",
+    "Are you sure? 😏",
+    "No escape! 💘",
+    "You can't escape love 💞",
+    "Keep trying 😉",
+    "Seriously? 🤨",
+    "Still no? Really? 😂",
+    "Please honey 🥺"
+];
 
-noBtn.addEventListener("mouseover", moveButton);
-noBtn.addEventListener("click", moveButton);
-noBtn.addEventListener("touchstart", moveButton);
+let index = 0;
 
-function moveButton() {
-    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+function noClicked() {
+    const noBtn = document.querySelector(".no");
+    noBtn.innerText = messages[index];
 
-    noBtn.style.position = "absolute";
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+    index++;
 
-    noBtn.innerText = "Not allowed 😜";
+    if (index >= messages.length) {
+        index = 0;
+    }
 }
 
 </script>
